@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
+		<style>
+            body {
+                background-color: #f4f4f4;
+            }
+            main {
+                border: 1px solid #BBB;
+                background-color: #fff;
+            }
+            td, th {
+                text-align: center;
+            }
+        </style>
+		<title>jquery.addClassByAtt</title>
+	</head>
+    <body>
+		<main role="main" class="rounded container my-2">
+            <h1>jquery.addClassByAtt</h1>
+            <h2>Author: <a href="https://github.com/gar-cad" rel="author">Gareth Cadwaladr</a></h2>
+            <p class="text-muted">A simple jquery plugin that adds a specific class to an element depending on the numerical value of an attribte of an element. It takes 2 parameters:</p>
+            <ol>
+                <li><code>options</code>: An array of dictionaries that include the items: <code>class</code>, <code>minVal</code> and <code>maxVal</code>. Each element in the array specifices a rule - add class <code>class</code> to element if the value of the attribute is between <code>minVal</code> and <code>maxVal</code></li>
+                <li><code>attribute</code>: The attribute to check.</li>
+            </ol>
+            <nav class="list-group">
+                <a href="#example1" class="list-group-item list-group-item-action">Basic usage</a>
+            </nav>
+            <article class="card border-success my-4" id="example1">
+                <div class="card-header text-white bg-success">
+                Basic usage
+                </div>
+                <div class="card-body border-success">
+                    <p class="text-muted"></p>
+                    <!-- example -->
+                    <div class="card border-danger my-3">
+                        <div class="card-header text-white bg-danger">Example</div>
+                        <div class="card-body py-0">
+                            <h3 class="my-2">Risk assessment table</h3>
+                            <table id="example" class="my-2 table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">Likelihood</th>
+                                        <th colspan="5">Severity</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Trivial</th>
+                                        <th scope="col">Minor injury</th>
+                                        <th scope="col">Over 3 day injury</th>
+                                        <th scope="col">Major injury</th>
+                                        <th scope="col">Incapacity or death</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Highly unlikely</th>
+                                        <td title="1">1</td>
+                                        <td title="2">2</td>
+                                        <td title="3">3</td>
+                                        <td title="4">4</td>
+                                        <td title="5">5</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Unlikely</th>
+                                        <td title="2">2</td>
+                                        <td title="4">4</td>
+                                        <td title="6">6</td>
+                                        <td title="8">8</td>
+                                        <td title="10">10</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Possible</th>
+                                        <td title="3">3</td>
+                                        <td title="6">6</td>
+                                        <td title="9">9</td>
+                                        <td title="12">12</td>
+                                        <td title="15">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Probable</th>
+                                        <td title="4">4</td>
+                                        <td title="8">8</td>
+                                        <td title="12">12</td>
+                                        <td title="16">16</td>
+                                        <td title="20">20</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Certain</th>
+                                        <td title="5">5</td>
+                                        <td title="10">10</td>
+                                        <td title="15">15</td>
+                                        <td title="20">20</td>
+                                        <td title="25">25</td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- html -->
+                    <div class="card border-warning my-3">
+                        <div class="card-header text-white bg-warning">html</div>
+                        <div class="card-body py-0">
+                            <pre><code>
+&lt;h3 class="my-2"&gt;Risk assessment table&lt;/h3&gt;
+&lt;table id="example" class="my-2 table table-bordered"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th rowspan="2"&gt;Likelihood&lt;/th&gt;
+            &lt;th colspan="5"&gt;Severity&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Trivial&lt;/th&gt;
+            &lt;th scope="col"&gt;Minor injury&lt;/th&gt;
+            &lt;th scope="col"&gt;Over 3 day injury&lt;/th&gt;
+            &lt;th scope="col"&gt;Major injury&lt;/th&gt;
+            &lt;th scope="col"&gt;Incapacity or death&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Highly unlikely&lt;/th&gt;
+            &lt;td title="1"&gt;1&lt;/td&gt;
+            &lt;td title="2"&gt;2&lt;/td&gt;
+            &lt;td title="3"&gt;3&lt;/td&gt;
+            &lt;td title="4"&gt;4&lt;/td&gt;
+            &lt;td title="5"&gt;5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Unlikely&lt;/th&gt;
+            &lt;td title="2"&gt;2&lt;/td&gt;
+            &lt;td title="4"&gt;4&lt;/td&gt;
+            &lt;td title="6"&gt;6&lt;/td&gt;
+            &lt;td title="8"&gt;8&lt;/td&gt;
+            &lt;td title="10"&gt;10&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Possible&lt;/th&gt;
+            &lt;td title="3"&gt;3&lt;/td&gt;
+            &lt;td title="6"&gt;6&lt;/td&gt;
+            &lt;td title="9"&gt;9&lt;/td&gt;
+            &lt;td title="12"&gt;12&lt;/td&gt;
+            &lt;td title="15"&gt;15&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Probable&lt;/th&gt;
+            &lt;td title="4"&gt;4&lt;/td&gt;
+            &lt;td title="8"&gt;8&lt;/td&gt;
+            &lt;td title="12"&gt;12&lt;/td&gt;
+            &lt;td title="16"&gt;16&lt;/td&gt;
+            &lt;td title="20"&gt;20&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Certain&lt;/th&gt;
+            &lt;td title="5"&gt;5&lt;/td&gt;
+            &lt;td title="10"&gt;10&lt;/td&gt;
+            &lt;td title="15"&gt;15&lt;/td&gt;
+            &lt;td title="20"&gt;20&lt;/td&gt;
+            &lt;td title="25"&gt;25&lt;/td&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                            </code></pre>
+                        </div>
+                    </div>
+                    
+                    <!-- javascript -->
+                    <div class="card border-warning my-3">
+                        <div class="card-header text-white bg-warning">javascript</div>
+                        <div class="card-body py-0">
+                            <pre><code>
+&lt;script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;script src="../dist/jquery.addClassByAtt.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    var classes = [
+        {'class': 'bg-success text-light', 'minVal': 0, 'maxVal': 4},
+        {'class': 'bg-warning text-dark', 'minVal': 5, 'maxVal': 9},
+        {'class': 'bg-danger text-light', 'minVal': 10, 'maxVal': 25}
+    ];
+    $('#example td').addClassByAtt({'options': classes, 'attribute':'title'});
+&lt;/script&gt;
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <footer>
+                <small class="text-secondary">&copy; Gareth Cadwaladr 2019</small>
+            </footer>
+        </main>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <script src="../dist/jquery.addClassByAtt.min.js"></script>
+        <script>
+            var classes = [
+                {'class': 'bg-success text-light', 'minVal': 0, 'maxVal': 4},
+                {'class': 'bg-warning text-dark', 'minVal': 5, 'maxVal': 9},
+                {'class': 'bg-danger text-light', 'minVal': 10, 'maxVal': 25}
+            ];
+            
+            $('#example td').addClassByAtt({'options': classes, 'attribute':'title'});
+        </script>
+    </body>
+</html>
